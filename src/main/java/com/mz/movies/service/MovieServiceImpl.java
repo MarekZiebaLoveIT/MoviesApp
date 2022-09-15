@@ -24,6 +24,7 @@ public class MovieServiceImpl implements MovieService {
     @Override
     public Page<MovieDTOResponse> getMovies(Integer pageSize, Integer pageNumber) {
         Pageable pageable = Utils.createPageableObject(pageSize, pageNumber);
+
         var listOfMovies = movieRepository.findAll(pageable);
         return listOfMovies.map(movieMapper::movieToMovieDTO);
     }
