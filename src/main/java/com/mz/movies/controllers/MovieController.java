@@ -17,9 +17,10 @@ public class MovieController {
     private final MovieService movieService;
 
     @GetMapping
-    public Page<MovieDTOResponse> getMovies(@RequestParam(required = false) Integer pageSize,
-                                            @RequestParam(required = false) Integer pageNumber) {
-        return movieService.getMovies(pageSize, pageNumber);
+    public Page<MovieDTOResponse> getMovies(@RequestParam(required = false, defaultValue = "0") Integer pageNumber,
+                                            @RequestParam(required = false, defaultValue = "4") Integer pageSize,
+                                            @RequestParam(required = false, defaultValue = "title") String sortBy) {
+        return movieService.getMovies(pageNumber, pageSize, sortBy);
     }
 
     @GetMapping("/{id}")

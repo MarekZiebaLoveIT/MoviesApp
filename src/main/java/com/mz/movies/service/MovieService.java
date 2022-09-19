@@ -7,7 +7,7 @@ import org.springframework.data.domain.Page;
 
 public interface MovieService {
 
-    Page<MovieDTOResponse> getMovies(Integer pageSize, Integer pageNumber);
+    Page<MovieDTOResponse> getMovies(Integer pageNumber,Integer pageSize, String sortBy);
 
     MovieDTOResponse getMovie(Long id);
 
