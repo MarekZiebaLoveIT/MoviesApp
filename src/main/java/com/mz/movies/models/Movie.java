@@ -3,13 +3,12 @@ package com.mz.movies.models;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.time.LocalDate;
+import java.util.List;
 
+@ToString
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
@@ -38,6 +37,10 @@ public class Movie {
     @Min(value = 1895, message = "Minimum year is 1895")
     @Max(value = 2099, message = "Max year is set for 2099")
     private int year;
+
+    @ManyToMany(mappedBy = "movies")
+    @Column(nullable = false)
+    private List<Category> category;
 
     private LocalDate createdAt;
 

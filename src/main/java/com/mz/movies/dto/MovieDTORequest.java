@@ -1,10 +1,11 @@
 package com.mz.movies.dto;
 
-import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import com.mz.movies.models.Category;
+import lombok.*;
 
+import java.util.List;
+
+@ToString
 @Builder
 @Getter
 @Setter
@@ -17,6 +18,9 @@ public class MovieDTORequest {
 
     private String director;
 
+    private List<Category> category;
+
     private int year;
+
 
 }

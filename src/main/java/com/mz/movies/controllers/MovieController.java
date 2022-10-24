@@ -17,10 +17,11 @@ public class MovieController {
     private final MovieService movieService;
 
     @GetMapping
-    public Page<MovieDTOResponse> getMovies(@RequestParam(required = false, defaultValue = "0") Integer pageNumber,
-                                            @RequestParam(required = false, defaultValue = "4") Integer pageSize,
-                                            @RequestParam(required = false, defaultValue = "title") String sortBy) {
+    public Page<MovieDTOResponse> getMovies(@RequestParam(required = false) Integer pageNumber,
+                                            @RequestParam(required = false) Integer pageSize,
+                                            @RequestParam(required = false) String sortBy) {
         return movieService.getMovies(pageNumber, pageSize, sortBy);
+        // dodać "defaultvalue" do Paramów
     }
 
     @GetMapping("/{id}")
