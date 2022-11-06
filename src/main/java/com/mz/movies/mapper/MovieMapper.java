@@ -9,6 +9,7 @@ import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Mapper(componentModel = "spring")
 public interface MovieMapper {
@@ -24,9 +25,10 @@ public interface MovieMapper {
     @Mapping(target = "createdAt", constant = "")
     void updateMovie(MovieDTORequest request, @MappingTarget Movie target);
 
-    default String map(List<Category> value) {
-        return value.get(0).getCategoryName();
+     default List<String> map(List<Category> value) {                                                        // default String map(List<Category> value)
+        return value.stream().map(Category::getCategoryName).collect(Collectors.toList());                   // return value.get(0).getCategoryName();  if only one category
     }
 
 }
+
 

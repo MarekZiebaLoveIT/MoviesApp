@@ -6,7 +6,6 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
 import java.util.Collection;
-import java.util.List;
 
 @ToString
 @Entity
@@ -24,7 +23,7 @@ public class Category {
 
 
     @NotBlank(message = "Category name is required")
-    private String categoryName;
+    private String categoryName;                       // private String categoryName;
 
     private LocalDate createdAt;
 

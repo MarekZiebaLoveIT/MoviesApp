@@ -3,6 +3,7 @@ package com.mz.movies.dto;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @ToString
 @Getter
@@ -17,7 +18,7 @@ public class MovieDTOResponse {
 
     private String director;
 
-    private String categoryName;
+    private List<String> categoryName;      // String categoryName; if only one category
 
     private int year;
 

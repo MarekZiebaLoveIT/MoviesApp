@@ -10,4 +10,7 @@ public class MoviesApplication {
         SpringApplication.run(MoviesApplication.class, args);
     }
 
+    // TODO: 2022-10-01 JWT Security zrobić
+    // TODO: 2022-10-01 Exceptions Handler zrobic
+
 }
