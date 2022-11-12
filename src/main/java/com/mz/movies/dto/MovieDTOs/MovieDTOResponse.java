@@ -1,4 +1,4 @@
-package com.mz.movies.dto;
+package com.mz.movies.dto.MovieDTOs;
 
 import lombok.*;
 
@@ -23,7 +23,5 @@ public class MovieDTOResponse {
     private int year;
 
     private LocalDate createdAt;
-
-
 
 }

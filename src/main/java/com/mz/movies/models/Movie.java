@@ -39,7 +39,6 @@ public class Movie {
     private int year;
 
     @ManyToMany(mappedBy = "movies")
-    @Column(nullable = false)
     private List<Category> category;
 
     private LocalDate createdAt;

@@ -1,4 +1,4 @@
-package com.mz.movies.dto;
+package com.mz.movies.dto.MovieDTOs;
 
 import com.mz.movies.models.Category;
 import lombok.*;
@@ -21,6 +21,5 @@ public class MovieDTORequest {
     private List<Category> category;
 
     private int year;
-
 
 }

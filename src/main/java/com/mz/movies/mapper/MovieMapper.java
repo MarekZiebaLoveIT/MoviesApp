@@ -1,7 +1,7 @@
 package com.mz.movies.mapper;
 
-import com.mz.movies.dto.MovieDTORequest;
-import com.mz.movies.dto.MovieDTOResponse;
+import com.mz.movies.dto.MovieDTOs.MovieDTORequest;
+import com.mz.movies.dto.MovieDTOs.MovieDTOResponse;
 import com.mz.movies.models.Category;
 import com.mz.movies.models.Movie;
 import org.mapstruct.Mapper;
@@ -26,9 +26,12 @@ public interface MovieMapper {
     void updateMovie(MovieDTORequest request, @MappingTarget Movie target);
 
      default List<String> map(List<Category> value) {                                                        // default String map(List<Category> value)
-        return value.stream().map(Category::getCategoryName).collect(Collectors.toList());                   // return value.get(0).getCategoryName();  if only one category
+        return value.stream()
+                    .map(category -> category.getCategoryName())
+                    .collect(Collectors.toList());         // return value.get(0).getCategoryName();  if only one category
     }
 
 }
+
 
 

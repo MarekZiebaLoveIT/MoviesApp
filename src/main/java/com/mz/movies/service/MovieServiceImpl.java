@@ -1,7 +1,7 @@
 package com.mz.movies.service;
 
-import com.mz.movies.dto.MovieDTORequest;
-import com.mz.movies.dto.MovieDTOResponse;
+import com.mz.movies.dto.MovieDTOs.MovieDTORequest;
+import com.mz.movies.dto.MovieDTOs.MovieDTOResponse;
 import com.mz.movies.mapper.MovieMapper;
 import com.mz.movies.repositories.MovieRepository;
 import com.mz.movies.utils.Utils;
@@ -40,7 +40,7 @@ public class MovieServiceImpl implements MovieService {
         var movieToAdd = movieMapper.movieRequestToMovie(request);  //czy tutaj zamiana DTO na encję?
         var currentDate = LocalDate.now();
         movieToAdd.setCreatedAt(currentDate);
-        return movieMapper.movieToMovieDTO(movieRepository.save(movieToAdd)); // jaki wynik? -> sprawdzić w slf4j
+        return movieMapper.movieToMovieDTO(movieRepository.save(movieToAdd));
     }
 
     @Override
@@ -49,7 +49,7 @@ public class MovieServiceImpl implements MovieService {
                                                   .orElseThrow(() -> new RuntimeException("Movie not found"));
         movieMapper.updateMovie(request, movieToUpdate); // o chuj tu chodzi?
         movieRepository.save(movieToUpdate);
-        return movieMapper.movieToMovieDTO(movieToUpdate); // sprawdzić wynik w slf4j
+        return movieMapper.movieToMovieDTO(movieToUpdate);
     }
 
     @Override
@@ -57,6 +57,6 @@ public class MovieServiceImpl implements MovieService {
         var movieToDelete = movieRepository.findById(id)
                                                   .orElseThrow(() -> new RuntimeException("Movie not found"));
         movieRepository.deleteById(id);
-        return movieMapper.movieToMovieDTO(movieToDelete); // sprawdzić w slf4j
+        return movieMapper.movieToMovieDTO(movieToDelete);
     }
 }

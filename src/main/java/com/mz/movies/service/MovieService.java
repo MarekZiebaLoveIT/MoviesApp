@@ -1,8 +1,8 @@
 package com.mz.movies.service;
 
 
-import com.mz.movies.dto.MovieDTORequest;
-import com.mz.movies.dto.MovieDTOResponse;
+import com.mz.movies.dto.MovieDTOs.MovieDTORequest;
+import com.mz.movies.dto.MovieDTOs.MovieDTOResponse;
 import org.springframework.data.domain.Page;
 
 public interface MovieService {

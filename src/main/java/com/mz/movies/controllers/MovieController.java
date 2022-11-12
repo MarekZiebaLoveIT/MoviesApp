@@ -1,7 +1,7 @@
 package com.mz.movies.controllers;
 
-import com.mz.movies.dto.MovieDTORequest;
-import com.mz.movies.dto.MovieDTOResponse;
+import com.mz.movies.dto.MovieDTOs.MovieDTORequest;
+import com.mz.movies.dto.MovieDTOs.MovieDTOResponse;
 import com.mz.movies.service.MovieService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
