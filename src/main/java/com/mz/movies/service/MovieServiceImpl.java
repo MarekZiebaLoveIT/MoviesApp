@@ -25,14 +25,14 @@ public class MovieServiceImpl implements MovieService {
     public Page<MovieDTOResponse> getMovies(Integer pageNumber, Integer pageSize, String sortBy) {
         Pageable pageable = Utils.createPageableObject(pageNumber, pageSize, sortBy);
         var listOfMovies = movieRepository.findAll(pageable);
-        return listOfMovies.map(movieMapper::movieToMovieDTO);
+        return listOfMovies.map(movieMapper::movieEntityToMovieDtoResponse);
     }
 
     @Override
     public MovieDTOResponse getMovie(Long id) {
         var movie = movieRepository.findById(id)
                                           .orElseThrow(() -> new RuntimeException("Movie not found"));
-        return movieMapper.movieToMovieDTO(movie);
+        return movieMapper.movieEntityToMovieDtoResponse(movie);
     }
 
     @Override
@@ -40,7 +40,7 @@ public class MovieServiceImpl implements MovieService {
         var movieToAdd = movieMapper.movieRequestToMovie(request);  //czy tutaj zamiana DTO na encję?
         var currentDate = LocalDate.now();
         movieToAdd.setCreatedAt(currentDate);
-        return movieMapper.movieToMovieDTO(movieRepository.save(movieToAdd));
+        return movieMapper.movieEntityToMovieDtoResponse(movieRepository.save(movieToAdd));
     }
 
     @Override
@@ -49,7 +49,7 @@ public class MovieServiceImpl implements MovieService {
                                                   .orElseThrow(() -> new RuntimeException("Movie not found"));
         movieMapper.updateMovie(request, movieToUpdate); // o chuj tu chodzi?
         movieRepository.save(movieToUpdate);
-        return movieMapper.movieToMovieDTO(movieToUpdate);
+        return movieMapper.movieEntityToMovieDtoResponse(movieToUpdate);
     }
 
     @Override
@@ -57,6 +57,6 @@ public class MovieServiceImpl implements MovieService {
         var movieToDelete = movieRepository.findById(id)
                                                   .orElseThrow(() -> new RuntimeException("Movie not found"));
         movieRepository.deleteById(id);
-        return movieMapper.movieToMovieDTO(movieToDelete);
+        return movieMapper.movieEntityToMovieDtoResponse(movieToDelete);
     }
 }

@@ -21,6 +21,12 @@ public class CategoryController {
         return categoryService.getCategories();
     }
 
+    @GetMapping("/{id}")
+    public CategoryDTO getCategory(@PathVariable Long id) {
+        return categoryService.getCategory(id);
+    }
+
+
     @PostMapping
     public CategoryDTO addCategory(@Valid @RequestBody CategoryDTO request) {
         return categoryService.addCategory(request);

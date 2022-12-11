@@ -5,11 +5,9 @@ import lombok.*;
 
 import java.util.List;
 
-@ToString
+
 @Builder
-@Getter
-@Setter
-@EqualsAndHashCode
+@Data
 public class MovieDTORequest {
 
     private String title;

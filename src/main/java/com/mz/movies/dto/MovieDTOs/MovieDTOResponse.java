@@ -1,14 +1,12 @@
 package com.mz.movies.dto.MovieDTOs;
 
+import com.mz.movies.dto.CategoryDTOs.CategoryDTO;
 import lombok.*;
 
 import java.time.LocalDate;
 import java.util.List;
 
-@ToString
-@Getter
-@Setter
-@EqualsAndHashCode
+@Data
 @Builder
 public class MovieDTOResponse {
 
@@ -18,7 +16,7 @@ public class MovieDTOResponse {
 
     private String director;
 
-    private List<String> categoryName;      // String categoryName; if only one category
+    private List<CategoryDTO> categoryName;
 
     private int year;
 

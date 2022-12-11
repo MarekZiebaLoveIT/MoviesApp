@@ -2,11 +2,9 @@ package com.mz.movies.dto.CategoryDTOs;
 
 import lombok.*;
 
-@ToString
-@Getter
-@Setter
-@Builder
-@EqualsAndHashCode
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class CategoryDTO {
 
     private String categoryName;

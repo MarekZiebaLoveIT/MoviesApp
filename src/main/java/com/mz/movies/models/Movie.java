@@ -8,12 +8,10 @@ import javax.validation.constraints.*;
 import java.time.LocalDate;
 import java.util.List;
 
-@ToString
+@Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
 @Entity
 public class Movie {
 

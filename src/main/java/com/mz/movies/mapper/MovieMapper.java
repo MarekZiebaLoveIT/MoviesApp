@@ -1,21 +1,25 @@
 package com.mz.movies.mapper;
 
+import com.mz.movies.dto.CategoryDTOs.CategoryDTO;
 import com.mz.movies.dto.MovieDTOs.MovieDTORequest;
 import com.mz.movies.dto.MovieDTOs.MovieDTOResponse;
 import com.mz.movies.models.Category;
 import com.mz.movies.models.Movie;
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.MappingTarget;
+import org.mapstruct.*;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
 public interface MovieMapper {
 
     @Mapping(target = "categoryName", source = "category")
-    MovieDTOResponse movieToMovieDTO(Movie movie);
+    MovieDTOResponse movieEntityToMovieDtoResponse(Movie movieEntity);
+
+    @IterableMapping(qualifiedByName = "categoryMapper")
+    List<CategoryDTO> listCategoryToDTOList(List<Category> categoryList);
+
+    @Named("categoryMapper")
+    CategoryDTO categoryToCategoryName(Category category);
 
     @Mapping(target = "id", source = "title")
     @Mapping(target = "createdAt", constant = "")
@@ -25,13 +29,6 @@ public interface MovieMapper {
     @Mapping(target = "createdAt", constant = "")
     void updateMovie(MovieDTORequest request, @MappingTarget Movie target);
 
-     default List<String> map(List<Category> value) {                                                        // default String map(List<Category> value)
-        return value.stream()
-                    .map(category -> category.getCategoryName())
-                    .collect(Collectors.toList());         // return value.get(0).getCategoryName();  if only one category
-    }
-
 }
-
 
 

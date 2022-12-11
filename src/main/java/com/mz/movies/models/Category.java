@@ -6,6 +6,8 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 
@@ -26,14 +28,6 @@ public class Category {
     private LocalDate createdAt;
 
     @ManyToMany
-    private Set<Movie> movies;
+    private Set<Movie> movies = new HashSet<>();
 
 }
-
-//public Collection<Movie> getMovies() {
-//        return movies;
-//    }
-//
-//    public void setMovies(Collection<Movie> movies) {
-//        this.movies = movies;
-//    }
